@@ -6,17 +6,12 @@ mod types;
 
 use std::env;
 use std::fs;
-use std::io;
 
 use header::ElfHeader;
 
 fn read_header(raw: Vec<u8>) {
     let slice = raw.as_slice();
     let parsed = ElfHeader::parse(&slice);
-    // let parsed = MachineType::parse(b"\x00\x3e");
-
-    // let parsed = MachineType::parse(b"\xFF\xFF");
-    // dbg!(parsed);
 
     match parsed {
         Ok((x, y)) => println!("{:?}", y),
